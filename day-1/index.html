@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Exercício 1 Vue</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="app">
+  <h1>To do list </h1>
+<div class="form">
+  <form @submit.prevent="save()">
+    <input type='text' placeholder="entre com uma tarefa" v-model="toDo" ref="toDoInput">
+    <button>Enviar</button>
+  </form>
+  <p class="message" v-show="errorMessage">{{errorMessage}}</p>
+  <div class="to-do-list">
+    <ol>
+      <li v-for="td in toDoList" :key="td.text">
+      <span class="text" :class="{'completed': td.completed}">{{td.text}}</span>
+        <span class="actions">
+          <button class="complete" v-if="!td.completed" @click="complete(td)">&#10004;</button>
+          <button class="remove" @click="remove (td)">&#10006;</button>
+        </span>
+      </li>
+  </div>
+</div>
+</div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
